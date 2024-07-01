@@ -37,6 +37,7 @@ alias pscpu='ps auxf | sort -nr -k 3 | head -5' # Get top process eating cpu
 
 alias c="code ."
 alias wcode='code . --profile "Web"'
+alias dotc='code $HOME/dotfiles'
 
 alias titanium='ssh rymarchuk@131.114.50.215'
 
