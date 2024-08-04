@@ -10,6 +10,8 @@ alias weather="curl http://wttr.in/Pisa"
 alias ipinfo="curl --silent https://ipinfo.io | jq"
 
 alias ff="fastfetch"
+alias lg="lazygit"
+alias bt="btop"
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
@@ -35,9 +37,9 @@ alias free='free -m' # show sizes in MB
 alias psmem='ps auxf | sort -nr -k 4 | head -5' # Get top process eating memory
 alias pscpu='ps auxf | sort -nr -k 3 | head -5' # Get top process eating cpu
 
-alias c="code ."
-alias wcode='code . --profile "Web"'
-alias dotc='code $HOME/dotfiles'
+alias vs="code ."
+alias webvs='code . --profile "Web"'
+alias dotvs='code $HOME/dotfiles'
 
 alias titanium='ssh rymarchuk@131.114.50.215'
 
@@ -48,4 +50,8 @@ updatego() {
     wget "https://go.dev/dl/$(curl 'https://go.dev/VERSION?m=text' | head -n 1).linux-amd64.tar.gz"
     sudo rm -rf /usr/local/go
     sudo tar -C /usr/local -xzf "$(curl 'https://go.dev/VERSION?m=text' | head -n 1).linux-amd64.tar.gz"
+}
+
+download_music_from_youtube() {
+    yt-dlp -x --audio-format mp3 --audio-quality 0 -o "~/Music/%(title)s.%(ext)s" https://youtu.be/$1
 }
