@@ -11,7 +11,7 @@ if [[ "$(uname -a)" == *"Ubuntu"* ]]; then
 	# Install required packages
     sudo add-apt-repository ppa:zhangsongcui3371/fastfetch
     sudo apt update
-	packages=("alacritty" "exa" "bat" "fastfetch" "fzf" "ripgrep" "zsh" "curl" "wget" "git" "unzip" "zip" "htop")
+	packages=("alacritty" "exa" "bat" "fastfetch" "fzf" "ripgrep" "zsh" "curl" "wget" "git" "unzip" "zip" "htop" "btop")
 
 	for package in "${packages[@]}"; do
 		if ! dpkg -s "$package" &> /dev/null; then
