@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Note: Make sure to run this script with appropriate permissions.
+
 # Check if the OS is Ubuntu
 if [[ "$(uname -a)" == *"Ubuntu"* ]]; then
 	# Check if apt is installed
@@ -28,6 +30,13 @@ if [[ "$(uname -a)" == *"Ubuntu"* ]]; then
     else
         sh -c "$(wget -O- https://raw.githubusercontent.com/romkatv/zsh4humans/v5/install)"
     fi
+
+
+
+	# This script is used to configure the keybindings for switching to applications in GNOME Shell.
+	# It uses the 'gsettings' command to set the keybindings for the 'switch-to-application-X' keys, where X is a number from 1 to 9.
+	# The keybindings are set to an empty array '[]', effectively disabling the default keybindings.
+	for i in $(seq 1 9); do gsettings set org.gnome.shell.keybindings switch-to-application-"${i}" '[]'; done
 
 else
 	echo "At the moment this script is only compatible with Ubuntu distribution."

@@ -37,14 +37,18 @@ alias free='free -m' # show sizes in MB
 alias psmem='ps auxf | sort -nr -k 4 | head -5' # Get top process eating memory
 alias pscpu='ps auxf | sort -nr -k 3 | head -5' # Get top process eating cpu
 
-alias vs="code ."
-alias webvs='code . --profile "Web"'
-alias dotvs='code $HOME/dotfiles'
+alias c="code ."
+alias webc='code . --profile "Web"'
+alias dotc='code $HOME/dotfiles'
 
 alias titanium='ssh rymarchuk@131.114.50.215'
 
 function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
 compdef _directories md
+
+batdiff() {
+    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+}
 
 updatego() {
     wget "https://go.dev/dl/$(curl 'https://go.dev/VERSION?m=text' | head -n 1).linux-amd64.tar.gz"

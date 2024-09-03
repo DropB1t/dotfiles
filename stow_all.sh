@@ -1,3 +1,3 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
-for d in *(/); stow -v -t ~/ -S $d
+for d in *(/); do stow -v -t ~/ -S "$d"; done
