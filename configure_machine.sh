@@ -38,6 +38,14 @@ if [[ "$(uname -a)" == *"Ubuntu"* ]]; then
 	# The keybindings are set to an empty array '[]', effectively disabling the default keybindings.
 	for i in $(seq 1 9); do gsettings set org.gnome.shell.keybindings switch-to-application-"${i}" '[]'; done
 
+	# Sets the GNOME Shell window switcher to switch between windows across all workspaces.
+	# This command modifies the 'current-workspace-only' property of the 'org.gnome.shell.window-switcher' schema.
+	# When set to 'false', the window switcher will show windows from all workspaces.
+	# 
+	# Usage: gsettings set org.gnome.shell.window-switcher current-workspace-only false
+	#
+	gsettings set org.gnome.shell.window-switcher current-workspace-only false
+
 else
 	echo "At the moment this script is only compatible with Ubuntu distribution."
 	exit 1
