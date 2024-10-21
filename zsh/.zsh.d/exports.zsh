@@ -2,6 +2,9 @@
 export PATH="$HOME/.local/bin":$PATH
 export EDITOR="code --wait"
 
+# Haskell
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
+
 # Java
 if [ -d "/usr/lib/jvm/java-11-openjdk-amd64" ]; then
   export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
