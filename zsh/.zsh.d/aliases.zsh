@@ -30,6 +30,8 @@ alias ig="grep -i"
 alias hig="history | grep -i"
 alias skp="sudo kill -9"
 
+alias update-all='sudo apt update && sudo apt upgrade'
+
 # easier to read disk
 alias df='df -h'     # human-readable sizes
 alias free='free -m' # show sizes in MB
@@ -46,7 +48,7 @@ alias titanium='ssh rymarchuk@131.114.50.215'
 function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
 compdef _directories md
 
-batdiff() {
+gtdiff() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
 
