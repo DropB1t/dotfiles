@@ -107,6 +107,7 @@ typeset -a sources
 CONFIG_DIR="$HOME/.zsh.d"
 
 sources+="$CONFIG_DIR/aliases.zsh"
+sources+="$CONFIG_DIR/update-zig.zsh"
 sources+="$CONFIG_DIR/history.zsh"
 sources+="$CONFIG_DIR/exports.zsh"
 sources+="$CONFIG_DIR/syntax-highlighting.zsh"

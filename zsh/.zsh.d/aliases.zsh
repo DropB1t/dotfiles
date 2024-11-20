@@ -30,7 +30,7 @@ alias ig="grep -i"
 alias hig="history | grep -i"
 alias skp="sudo kill -9"
 
-alias update-all='sudo apt update && sudo apt upgrade'
+alias apt-update='sudo apt update && sudo apt upgrade'
 
 # easier to read disk
 alias df='df -h'     # human-readable sizes
@@ -42,8 +42,6 @@ alias pscpu='ps auxf | sort -nr -k 3 | head -5' # Get top process eating cpu
 alias c="code ."
 alias webc='code . --profile "Web"'
 alias dotc='code $HOME/dotfiles'
-
-alias titanium='ssh rymarchuk@131.114.50.215'
 
 function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
 compdef _directories md

@@ -5,6 +5,11 @@ export EDITOR="code --wait"
 # Haskell
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
 
+# Zig
+if [ -d "/opt/zig" ]; then
+  export PATH="/opt/zig:$PATH"
+fi
+
 # Java
 if [ -d "/usr/lib/jvm/java-11-openjdk-amd64" ]; then
   export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
