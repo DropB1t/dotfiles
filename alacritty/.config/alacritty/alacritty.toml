@@ -1,5 +1,6 @@
 #import = ["/home/dropbit/.config/alacritty/themes/catppuccin-mocha.toml"]
-import = ["/home/dropbit/.config/alacritty/themes/rose-pine.toml"]
+#import = ["/home/dropbit/.config/alacritty/themes/rose-pine.toml"]
+import = ["/home/dropbit/.config/alacritty/themes/gruvbox-dark.toml"]
 
 [font]
 size = 15.0
