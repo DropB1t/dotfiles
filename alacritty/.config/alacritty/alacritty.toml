@@ -2,23 +2,26 @@
 #import = ["/home/dropbit/.config/alacritty/themes/rose-pine.toml"]
 import = ["/home/dropbit/.config/alacritty/themes/gruvbox-dark.toml"]
 
+[colors]
+draw_bold_text_with_bright_colors = true
+
 [font]
 size = 15.0
 
 [font.bold]
-family = "Hack Nerd Font"
+family = "Iosevka Term"
 style = "Bold"
 
 [font.bold_italic]
-family = "Hack Nerd Font"
+family = "Iosevka Term"
 style = "Bold Italic"
 
 [font.italic]
-family = "Hack Nerd Font"
+family = "Iosevka Term"
 style = "Italic"
 
 [font.normal]
-family = "Hack Nerd Font"
+family = "Iosevka Term"
 style = "Regular"
 
 [[keyboard.bindings]]
@@ -38,7 +41,7 @@ mods = "Alt"
 
 [window]
 decorations = "none"
-opacity = 0.95
+opacity = 1
 startup_mode = "Maximized"
 
 [window.padding]

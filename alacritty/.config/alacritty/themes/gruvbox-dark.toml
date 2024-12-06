@@ -2,9 +2,9 @@
 
 # Default colors
 [colors.primary]
-# hard contrast background = = '#1d2021'
-background = '#282828'
-# soft contrast background = = '#32302f'
+# hard contrast background = '#1d2021' backup: '282828`
+background = '#1d2021'
+# soft contrast background = '#32302f' backup: 'ebdbb2`
 foreground = '#ebdbb2'
 
 # Normal colors
