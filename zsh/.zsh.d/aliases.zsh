@@ -1,8 +1,8 @@
 
 # general use
 alias ls='exa --icons'                                              # ls
-alias ll='exa -alb --git --icons'                                   # long
-alias la='exa -albhHigUm --time-style=default --git --color-scale'  # all list
+alias ll='exa -alhb --git --icons'                                   # long
+alias la='exa -albhHigUm --time-style=long-iso --git --color-scale'  # all list
 alias lt='exa --tree --git --icons --color-scale'                   # tree list
 
 alias clock='rsclock -S -c -f 150'

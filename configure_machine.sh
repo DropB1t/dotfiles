@@ -13,7 +13,7 @@ if [[ "$(uname -a)" == *"Ubuntu"* ]]; then
 	# Install required packages
     sudo add-apt-repository ppa:zhangsongcui3371/fastfetch
     sudo apt update
-	packages=("alacritty" "exa" "bat" "fastfetch" "fzf" "ripgrep" "zsh" "curl" "wget" "git" "unzip" "zip" "htop" "btop")
+	packages=("alacritty" "exa" "bat" "fastfetch" "fzf" "ripgrep" "zsh" "curl" "wget" "git" "unzip" "zip" "htop" "btop", "gnome-shell-pomodoro", "gnome-tweaks")
 
 	for package in "${packages[@]}"; do
 		if ! dpkg -s "$package" &> /dev/null; then
@@ -41,9 +41,6 @@ if [[ "$(uname -a)" == *"Ubuntu"* ]]; then
 	# Sets the GNOME Shell window switcher to switch between windows across all workspaces.
 	# This command modifies the 'current-workspace-only' property of the 'org.gnome.shell.window-switcher' schema.
 	# When set to 'false', the window switcher will show windows from all workspaces.
-	# 
-	# Usage: gsettings set org.gnome.shell.window-switcher current-workspace-only false
-	#
 	gsettings set org.gnome.shell.window-switcher current-workspace-only false
 
 else
