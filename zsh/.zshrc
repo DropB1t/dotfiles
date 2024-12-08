@@ -122,9 +122,6 @@ for file in $sources[@]; do
     fi
 done
 
-#autoload -Uz compinit
-#zstyle ':completion:*' menu select
-
 autoload -Uz compinit 
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
 	compinit;
