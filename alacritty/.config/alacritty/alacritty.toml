@@ -26,7 +26,7 @@ style = "Italic"
 
 [font.normal]
 family = "Iosevka Term"
-style = "Regular"
+style = "Medium"
 
 [[keyboard.bindings]]
 action = "Quit"
