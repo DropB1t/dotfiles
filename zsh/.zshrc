@@ -101,8 +101,6 @@ export NVM_LAZY_LOAD=true
 
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
-[ -s "/home/dropbit/.bun/_bun" ] && source "/home/dropbit/.bun/_bun"
-
 typeset -a sources
 CONFIG_DIR="$HOME/.zsh.d"
 
@@ -110,7 +108,7 @@ sources+="$CONFIG_DIR/aliases.zsh"
 sources+="$CONFIG_DIR/update-zig.zsh"
 sources+="$CONFIG_DIR/history.zsh"
 sources+="$CONFIG_DIR/exports.zsh"
-sources+="$CONFIG_DIR/syntax-highlighting.zsh"
+#sources+="$CONFIG_DIR/syntax-highlighting.zsh"
 
 if [ -d "$HOME/.nvm" ]; then
   sources+="$CONFIG_DIR/zsh-nvm/zsh-nvm.plugin.zsh"
@@ -124,6 +122,12 @@ for file in $sources[@]; do
     fi
 done
 
-autoload -Uz compinit
-zstyle ':completion:*' menu select
-fpath+=~/.zfunc
+#autoload -Uz compinit
+#zstyle ':completion:*' menu select
+
+autoload -Uz compinit 
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+	compinit;
+else
+	compinit -C;
+fi;

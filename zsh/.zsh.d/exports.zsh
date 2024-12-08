@@ -40,6 +40,7 @@ if [ -d "$HOME/.bun" ]; then
   export BUN_INSTALL="$HOME/.bun"
   export PATH="$BUN_INSTALL/bin:$PATH"
 fi
+[ -s "/home/dropbit/.bun/_bun" ] && source "/home/dropbit/.bun/_bun"
 
 # Bat
 if [ -d "$HOME/.local/bin/bat" ]; then
