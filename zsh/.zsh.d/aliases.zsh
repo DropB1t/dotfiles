@@ -41,7 +41,7 @@ alias pscpu='ps auxf | sort -nr -k 3 | head -5' # Get top process eating cpu
 
 alias c="code ."
 alias webc='code . --profile "Web"'
-alias dotc='code $HOME/dotfiles'
+alias dotc='cd $HOME/dotfiles; code .'
 
 function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
 compdef _directories md
