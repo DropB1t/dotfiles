@@ -3,7 +3,7 @@ export PATH="$HOME/.local/bin":$PATH
 export EDITOR="code --wait"
 
 # Haskell
-[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
 
 # Zig
 if [ -d "/opt/zig" ]; then
@@ -16,8 +16,8 @@ if [ -d "/opt/idea" ]; then
 fi
 
 # Java
-if [ -d "/usr/lib/jvm/java-21-openjdk-amd64" ]; then
-  export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
+if [ -d "/usr/lib/jvm/java-17-openjdk-amd64" ]; then
+  export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
   export PATH=$JAVA_HOME/bin:$PATH
 fi
 

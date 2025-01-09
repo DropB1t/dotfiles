@@ -50,10 +50,16 @@ gtdiff() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
 
-updatego() {
+update-go() {
     wget "https://go.dev/dl/$(curl 'https://go.dev/VERSION?m=text' | head -n 1).linux-amd64.tar.gz"
     sudo rm -rf /usr/local/go
     sudo tar -C /usr/local -xzf "$(curl 'https://go.dev/VERSION?m=text' | head -n 1).linux-amd64.tar.gz"
+}
+
+update-discord() {
+    wget "https://discord.com/api/download/stable?platform=linux&format=deb" -O /tmp/discord.deb
+    sudo dpkg -i /tmp/discord.deb
+    rm /tmp/discord.deb
 }
 
 download_music_from_youtube() {
