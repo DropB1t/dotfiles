@@ -10,11 +10,6 @@ if [ -d "/opt/zig" ]; then
   export PATH="/opt/zig:$PATH"
 fi
 
-# Intellij
-if [ -d "/opt/idea" ]; then
-  export PATH="/opt/idea/bin:$PATH"
-fi
-
 # Java
 if [ -d "/usr/lib/jvm/java-17-openjdk-amd64" ]; then
   export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"

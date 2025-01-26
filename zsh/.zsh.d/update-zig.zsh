@@ -14,6 +14,26 @@ update-zig() {
         | .value."x86_64-linux".tarball  # Extract the tarball URL for Linux
     ')
 
+    # Check if the version is already installed
+    local installed_version=$(zig version | head -n 1 | cut -d ' ' -f 2)
+    # Extract the latest version from the JSON keys
+    local latest_version=$(echo "$download_data" | jq -r '
+        to_entries
+        | map(select(.key != "master"))  # Exclude the master (nightly) version
+        | sort_by(.key | split(".") | map(tonumber))  # Sort versions
+        | reverse  # Most recent first
+        | .[0]  # Get the most recent entry
+        | .key  # Extract the version number
+    ')
+
+    echo "Latest version: $latest_version"
+    if [[ "$installed_version" == "$latest_version" ]]; then
+        echo "Zig is already up-to-date at version $installed_version."
+        return 0
+    fi
+    exit 0
+
+
     if [[ -z "$tarball_url" ]]; then
         echo "Failed to fetch the Zig tarball URL. Check your network or the Zig website."
         return 1
