@@ -2,9 +2,6 @@
 export PATH="$HOME/.local/bin":$PATH
 export EDITOR="code --wait"
 
-# Haskell
-[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
-
 # Zig
 if [ -d "/opt/zig" ]; then
   export PATH="/opt/zig:$PATH"

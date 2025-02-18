@@ -51,9 +51,10 @@ gtdiff() {
 }
 
 update-go() {
-    wget "https://go.dev/dl/$(curl 'https://go.dev/VERSION?m=text' | head -n 1).linux-amd64.tar.gz"
+    wget "https://go.dev/dl/$(curl 'https://go.dev/VERSION?m=text' | head -n 1).linux-amd64.tar.gz" -O /tmp/go.tar.gz
     sudo rm -rf /usr/local/go
-    sudo tar -C /usr/local -xzf "$(curl 'https://go.dev/VERSION?m=text' | head -n 1).linux-amd64.tar.gz"
+    sudo tar -C /usr/local -xzf /tmp/go.tar.gz
+    rm /tmp/go.tar.gz
 }
 
 update-discord() {
@@ -62,6 +63,11 @@ update-discord() {
     rm /tmp/discord.deb
 }
 
+update-yt-dlp() {
+    curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o ~/.local/bin/yt-dlp
+    chmod a+rx ~/.local/bin/yt-dlp  # Make executable
+}
+
 download_music_from_youtube() {
-    yt-dlp -x --audio-format mp3 --audio-quality 0 -o "~/Music/%(title)s.%(ext)s" https://youtu.be/$1
+    ~/.local/bin/yt-dlp -x --audio-format mp3 --audio-quality 0 -o "~/Music/%(title)s.%(ext)s" https://youtu.be/$1
 }
