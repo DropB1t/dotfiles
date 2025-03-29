@@ -66,3 +66,4 @@
 	required = true
 [gitbutler]
 	aiModelProvider = anthropic
+	aiAnthropicKeyOption = butlerAPI
