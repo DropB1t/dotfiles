@@ -71,9 +71,6 @@ _gen_fzf_default_opts() {
    --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D"
 }
 
-_gen_fzf_default_opts
-
-# FZF Catppuccin
 _gen_fzf_catppuccin() {
   local color00='#1e1e2e'
   local color01='#313244'
@@ -96,3 +93,5 @@ _gen_fzf_catppuccin() {
     --color=fg:$color04,header:$color0D,info:$color0A,pointer:$color0C \
     --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D" 
 }
+
+#_gen_fzf_default_opts
