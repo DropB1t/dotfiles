@@ -1,9 +1,9 @@
 
 # general use
-alias ls='exa --icons'                                              # ls
-alias ll='exa -alhb --git --icons'                                   # long
-alias la='exa -albhHigUm --time-style=long-iso --git --color-scale'  # all list
-alias lt='exa --tree --git --icons --color-scale'                   # tree list
+alias ls='eza --icons'                                              # ls
+alias ll='eza -alhb --git --icons'                                   # long
+alias la='eza -albhHigUm --time-style=long-iso --git --color-scale'  # all list
+alias lt='eza --tree --git --icons --color-scale'                   # tree list
 
 alias clock='rsclock -S -c -f 150'
 alias weather="curl http://wttr.in/Pisa"
