@@ -39,9 +39,12 @@ if [ -d "$HOME/.bun" ]; then
 fi
 [ -s "/home/dropbit/.bun/_bun" ] && source "/home/dropbit/.bun/_bun"
 
-# Bat
-if [ -d "$HOME/.local/bin/bat" ]; then
-  export BAT_THEME="Catppuccino-mocha"
+# Bat setup bat theme if /usr/bin/bat exists
+if command -v batcat &> /dev/null; then
+  export BAT_THEME="1337"
+  export BAT_STYLE="numbers,changes"
+  export BAT_PAGER="less -R"
+  export BAT_TABS="4"
 fi
 
 if [ -d "$HOME/.spicetify" ]; then
