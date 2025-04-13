@@ -1,6 +1,7 @@
 [user]
 	name = "Yuriy Rymarchuk"
 	email = "45283261+DropB1t@users.noreply.github.com"
+
 [alias]
   # Command shortcuts
   ci = commit
@@ -18,19 +19,25 @@
   lg = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
   # List available aliases
   alias = !git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'
+
 [init]
   defaultBranch = main
+
 [core]
   pager = less -FX # Don't paginate output by default
   excludesfile = ~/.gitignore_global
   editor = code --wait
   whitespace = -trailing-space # Don't consider trailing space change as a cause for merge conflicts
+
 [column]
   ui = auto
+
 [branch]
   sort = -committerdate
+
 [tag]
   sort = version:refname
+
 [diff]
   algorithm = histogram
   colorMoved = plain
@@ -39,15 +46,16 @@
   wordRegex = . # When using --word-diff, assume --word-diff-regex=.
   submodule = log # Display submodule-related info (commit listings)
   tool = vscode # Use VSCode as the diff tool
-[difftool "vscode"]
-  cmd = code --wait --diff $LOCAL $REMOTE
+
 [push]
   default = simple # Push the current branch to the remote branch of the same name
-  autoSetupRemote = true # Automatically set up tracking branches when pushing to a new remote branch
-  followTags = true # Push tags when pushing branches
+  #autoSetupRemote = true # Automatically set up tracking branches when pushing to a new remote branch
+  #followTags = true # Push tags when pushing branches
+
 [fetch]
   # Auto-fetch submodule changes (sadly, won't auto-update)
   recurseSubmodules = on-demand
+
 [log]
   # Use abbrev SHAs whenever possible/relevant instead of full 40 chars
   abbrevCommit = true
@@ -55,19 +63,26 @@
   follow = true
   # Disable decorate for reflog
   decorate = false
+
 [status]
   # Display submodule rev change summaries in status
   submoduleSummary = true
   # Recursively traverse untracked directories to display all contents
   showUntrackedFiles = all
+
 [color "branch"]
   # Blue on black is hard to read in git branch -vv: use cyan instead
   upstream = cyan
+
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+
 [gitbutler]
 	aiModelProvider = openai
 	aiAnthropicKeyOption = butlerAPI
