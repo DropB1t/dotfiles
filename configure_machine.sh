@@ -2,9 +2,7 @@
 
 # Note: Make sure to run this script with appropriate permissions.
 
-# Function to install required packages
 install_required_packages() {
-	# Check if the package is already installed
 	for package in "${packages[@]}"; do
 		if ! dpkg -s "$package" &> /dev/null; then
 			echo "Installing $package..."
@@ -15,26 +13,23 @@ install_required_packages() {
 	done
 }
 
-# TODO: Remove catppuccin papirus folders theme and install only plain colors
-# Function to install Papirus Folders Icon Catppuccin theme
-install_papirus_folders_icon_catppuccin_theme() {
+# Function to install papirus-folders theme
+install_papirus_folders_theme() {
 	sudo add-apt-repository ppa:papirus/papirus
 	sudo apt update
 	sudo apt install -y papirus-icon-theme
-	cd /tmp
-	git clone https://github.com/catppuccin/papirus-folders.git
-	cd papirus-folders
-	sudo cp -r src/* /usr/share/icons/Papirus
-	curl -LO https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-folders/master/papirus-folders && chmod +x ./papirus-folders
-	./papirus-folders -C teal --theme Papirus-Dark
-	#./papirus-folders -C cat-mocha-lavender --theme Papirus-Dark
+	wget -qO- https://git.io/papirus-folders-install | sh
+
+	if ! command -v papirus-folders &> /dev/null; then
+		echo "error: papirus-folders is not installed"
+		exit 1
+	fi
+
+	papirus-folders -C bluegrey --theme Papirus
 	cd -
-	rm -rf /tmp/papirus-folders
 }
 
-# Check if the OS is Ubuntu
 if [[ "$(uname -a)" == *"Ubuntu"* || "$(uname -a)" == *"Debian"* || "$(uname -a)" == *"WSL"* ]]; then
-	# Check if apt is installed
 	if ! command -v apt &> /dev/null; then
 		echo "apt package manager is not installed."
 		exit 1
@@ -44,13 +39,13 @@ if [[ "$(uname -a)" == *"Ubuntu"* || "$(uname -a)" == *"Debian"* || "$(uname -a)
 	sudo apt install software-properties-common -y
     sudo add-apt-repository ppa:zhangsongcui3371/fastfetch -y
     sudo apt update -y
-	packages=("stow" "eza" "bat" "fastfetch" "fzf" "ripgrep" "zsh" "curl" "wget" "git" "unzip" "zip" "htop")
+	packages=("stow" "build-essential" "gcc" "nano" "vim" "eza" "bat" "fastfetch" "fzf" "ripgrep" "zsh" "curl" "wget" "git" "unzip" "zip" "htop")
 	
 	# Check if there is a graphical interface and we are not in a wsl2 environment
 	if [[ "$DISPLAY" != "" && "$WSL_DISTRO_NAME" == "" ]]; then
 		# Additional gui packages useful for DE installation
-		packages+=("alacritty" "gnome-tweaks", "gnome-shell-extension-manager", "gnome-shell-pomodoro", "gir1.2-gtop-2.0" "lm-sensors")
-		install_papirus_folders_icon_catppuccin_theme
+		packages+=("alacritty" "gnome-tweaks" "gnome-shell-extension-manager" "gnome-shell-pomodoro" "gir1.2-gtop-2.0" "lm-sensors")
+		install_papirus_folders_theme
 
 		# This script is used to configure the keybindings for switching to applications in GNOME Shell.
 		# It uses the 'gsettings' command to set the keybindings for the 'switch-to-application-X' keys, where X is a number from 1 to 9.
