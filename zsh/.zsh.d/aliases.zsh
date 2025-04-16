@@ -39,6 +39,11 @@ alias free='free -m' # show sizes in MB
 alias psmem='ps auxf | sort -nr -k 4 | head -5' # Get top process eating memory
 alias pscpu='ps auxf | sort -nr -k 3 | head -5' # Get top process eating cpu
 
+# If the system is WSL2 add code bin to the path
+if [[ $(uname -r) == *"WSL2"* ]]; then
+    export PATH="$PATH:/mnt/c/Users/yurai/AppData/Local/Programs/Microsoft VS Code/bin"
+fi
+
 alias c="code ."
 alias webc='code . --profile "Web"'
 alias dotc='cd $HOME/dotfiles; code .'
