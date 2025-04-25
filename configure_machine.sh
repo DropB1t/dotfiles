@@ -39,7 +39,7 @@ if [[ "$(uname -a)" == *"Ubuntu"* || "$(uname -a)" == *"Debian"* || "$(uname -a)
 	sudo apt install software-properties-common -y
     sudo add-apt-repository ppa:zhangsongcui3371/fastfetch -y
     sudo apt update -y
-	packages=("stow" "build-essential" "gcc" "nano" "vim" "eza" "bat" "fastfetch" "fzf" "ripgrep" "zsh" "curl" "wget" "git" "unzip" "zip" "htop")
+	packages=("stow" "build-essential" "gcc" "nano" "vim" "eza" "bat" "fastfetch" "fzf" "jq" "ripgrep" "zsh" "curl" "wget" "git" "unzip" "zip" "htop")
 	
 	# Check if there is a graphical interface and we are not in a wsl2 environment
 	if [[ "$DISPLAY" != "" && "$WSL_DISTRO_NAME" == "" ]]; then

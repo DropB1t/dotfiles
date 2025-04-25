@@ -108,7 +108,6 @@ sources+="$CONFIG_DIR/aliases.zsh"
 sources+="$CONFIG_DIR/update-zig.zsh"
 sources+="$CONFIG_DIR/history.zsh"
 sources+="$CONFIG_DIR/exports.zsh"
-#sources+="$CONFIG_DIR/mocha-syntax-highlighting.zsh"
 
 if [ -d "$HOME/.nvm" ]; then
   sources+="$CONFIG_DIR/zsh-nvm/zsh-nvm.plugin.zsh"
