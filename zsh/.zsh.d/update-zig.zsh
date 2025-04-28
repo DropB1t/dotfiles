@@ -23,22 +23,22 @@ update-zig() {
         | .[0]  # Get the most recent entry
         | .key  # Extract the version number
     ')
-    echo "Latest version: $latest_version"
+    info_ "Latest version: $latest_version"
     
     # Checkif zig exists on the system
     if ! command -v zig &> /dev/null; then
-        echo "Zig is not installed. Proceeding with installation..."
+        warning_ "Zig is not installed. Proceeding with installation..."
     else
         echo "Zig is already installed. Checking version..."
         local installed_version=$(zig version | head -n 1 | cut -d ' ' -f 2)
         if [[ "$installed_version" == "$latest_version" ]]; then
-            echo "Zig is already up-to-date at version $installed_version."
+            success_ "Zig is already up-to-date at version $installed_version."
             return 0
         fi
     fi
      
     if [[ -z "$tarball_url" ]]; then
-        echo "Failed to fetch the Zig tarball URL. Check your network or the Zig website."
+        error_ "Failed to fetch the Zig tarball URL. Check your network or the Zig website."
         return 1
     fi
 
@@ -56,18 +56,18 @@ update-zig() {
     fi
 
     # Extract and install
-    echo "Installing Zig to $install_dir..."
+    info_ "Installing Zig to $install_dir..."
     sudo rm -rf "$install_dir"  # Clear the old installation if exists
     sudo mkdir -p "$install_dir"
     sudo tar -xvf "$zig_archive" --strip-components=1 -C "$install_dir"
 
     if [[ $? -ne 0 ]]; then
-        echo "Failed to extract and install Zig."
+        error_ "Failed to extract and install Zig."
         rm -rf "$temp_dir"
         return 1
     fi
 
     # Cleanup
     rm -rf "$temp_dir"
-    echo "Zig installed successfully to $install_dir."
+    success_ "Zig installed successfully to $install_dir."
 }

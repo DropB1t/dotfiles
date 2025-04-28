@@ -45,7 +45,6 @@ if [[ $(uname -r) == *"WSL2"* ]]; then
 fi
 
 alias c="code ."
-alias webc='code . --profile "Web"'
 alias dotc='cd $HOME/dotfiles; code .'
 
 function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
