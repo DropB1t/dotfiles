@@ -75,3 +75,7 @@ update-yt-dlp() {
 download_music_from_youtube() {
     ~/.local/bin/yt-dlp -x --audio-format mp3 --audio-quality 0 -o "~/Music/%(title)s.%(ext)s" https://youtu.be/$1
 }
+
+update-ghostty() {
+    curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh | bash
+}
