@@ -40,6 +40,7 @@ killfzf() {
   # 4) Kill them
   info_ "Killing PIDs: ${pids[*]} with SIG$sig"
   kill -s "$sig" "${pids[@]}"
+  exit $?
 }
 
 zle -N killfzf
