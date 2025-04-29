@@ -5,7 +5,7 @@ alias ll='eza -alhb --git --icons=auto'                                   # long
 alias la='eza -albhHigUm --time-style=long-iso --git --color-scale'  # all list
 alias lt='eza --tree --git --icons=auto --color-scale'                   # tree list
 
-alias clock='rsclock -S -c -f 150'
+alias clock='rsclock -S -c'
 alias weather="curl http://wttr.in/Pisa"
 alias ipinfo="curl --silent https://ipinfo.io | jq"
 
