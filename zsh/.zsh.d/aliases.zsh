@@ -2,8 +2,8 @@
 # general use
 alias ls='eza --icons=auto'                                              # ls
 alias ll='eza -alhb --git --icons=auto'                                   # long
-alias la='eza -albhHigUm --time-style=long-iso --git --color-scale'  # all list
-alias lt='eza --tree --git --icons=auto --color-scale'                   # tree list
+alias la='eza -albhHigUm --time-style=long-iso --git --color-scale all'  # all list
+alias lt='eza --tree --git --icons=auto --color-scale all'                   # tree list
 
 alias clock='rsclock -S -c'
 alias weather="curl http://wttr.in/Pisa"
