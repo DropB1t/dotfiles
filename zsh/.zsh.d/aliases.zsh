@@ -50,6 +50,8 @@ alias dotc='cd $HOME/dotfiles; code .'
 function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
 compdef _directories md
 
+calc() { printf "%s\n" "$@" | bc -l; }
+
 gtdiff() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
