@@ -20,6 +20,12 @@
   # List available aliases
   alias = !git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'
 
+[url "git@github.com:DropB1t/"]
+  insteadOf = "db:"
+
+[url "git@github.com:"]
+  insteadOf = "gh:"
+
 [init]
   defaultBranch = main
 
@@ -65,6 +71,10 @@
   decorate = false
 
 [status]
+  # Show branch and tracking info in status
+  branch = true
+  # Show stash info in status
+  showStash = true
   # Display submodule rev change summaries in status
   submoduleSummary = true
   # Recursively traverse untracked directories to display all contents
