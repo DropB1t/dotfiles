@@ -1,13 +1,11 @@
 {
     "icon_theme": "Colored Zed Icons Theme Dark",
-    "theme": "One Dark",
-
-    "assistant": {
+    "theme": "Ayu Mirage",
+    "agent": {
         "default_model": {
             "provider": "copilot_chat",
             "model": "gpt-4o"
-        },
-        "version": "2"
+        }
     },
     "telemetry": { "diagnostics": false, "metrics": false },
 
