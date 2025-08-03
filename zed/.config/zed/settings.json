@@ -1,6 +1,7 @@
 {
     "icon_theme": "Colored Zed Icons Theme Dark",
     "theme": "Ayu Mirage",
+
     "agent": {
         "default_model": {
             "provider": "copilot_chat",
@@ -9,15 +10,10 @@
     },
     "telemetry": { "diagnostics": false, "metrics": false },
 
-    "notification_panel": {
-        "dock": "left"
+    "node": {
+      "path": "/home/dropbit/.nvm/versions/node/v22.6.0/bin/node"  // or wherever your system node is located
     },
-    "chat_panel": {
-        "dock": "left"
-    },
-    "outline_panel": {
-        "dock": "right"
-    },
+
     "project_panel": {
         "dock": "right"
     },
