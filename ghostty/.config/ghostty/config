@@ -14,3 +14,11 @@ gtk-tabs-location = bottom
 gtk-titlebar-hide-when-maximized = true
 mouse-hide-while-typing = true
 fullscreen = false
+
+minimum-contrast = 3
+
+keybind = ctrl+shift+w=close_surface
+keybind = ctrl+shift+up=goto_split:up
+keybind = ctrl+shift+down=goto_split:down
+keybind = ctrl+shift+right=goto_split:right
+keybind = ctrl+shift+left=goto_split:left
