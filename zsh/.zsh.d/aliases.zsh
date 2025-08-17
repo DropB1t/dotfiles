@@ -46,6 +46,7 @@ fi
 
 alias c="code ."
 alias dotc='cd $HOME/dotfiles; code .'
+alias cmus='cd ~/Music; cmus'
 
 function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
 compdef _directories md

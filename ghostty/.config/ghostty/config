@@ -4,6 +4,7 @@ window-theme = ghostty
 font-family = Iosevka Term Medium
 font-size = 15
 
+maximize = true
 window-height = 34
 window-width = 174
 window-padding-x = 12
