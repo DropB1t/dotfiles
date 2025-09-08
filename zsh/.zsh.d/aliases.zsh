@@ -9,6 +9,9 @@ alias clock='rsclock -S -c'
 alias weather="curl http://wttr.in/Pisa"
 alias ipinfo="curl --silent https://ipinfo.io | jq"
 
+alias cmkd='cmake -DCMAKE_BUILD_TYPE=Debug'
+alias cmkr='cmake -DCMAKE_BUILD_TYPE=Release'
+
 alias ff="fastfetch"
 alias lg="lazygit"
 alias bt="btop"
