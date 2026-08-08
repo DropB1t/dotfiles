@@ -129,3 +129,6 @@ if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
 else
 	compinit -C;
 fi;
+
+# opencode
+export PATH=/home/dropbit/.opencode/bin:$PATH
