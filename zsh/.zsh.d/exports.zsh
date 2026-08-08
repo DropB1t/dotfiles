@@ -1,6 +1,6 @@
 
 export PATH="$HOME/.local/bin":$PATH
-export EDITOR="code --wait"
+export EDITOR="zed --wait"
 
 # Zig
 if [ -d "/opt/zig" ]; then
