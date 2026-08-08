@@ -41,7 +41,7 @@ fi
 
 # Bat setup bat theme if /usr/bin/bat exists
 if command -v batcat &> /dev/null; then
-  export BAT_THEME="1337"
+  export BAT_THEME="ansi"
   export BAT_STYLE="numbers,changes"
   export BAT_PAGER="less -RF"
   export BAT_TABS="4"
