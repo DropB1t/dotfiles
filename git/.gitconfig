@@ -3,9 +3,6 @@
 	email = "45283261+DropB1t@users.noreply.github.com"
 
 [alias]
-  # Command shortcuts
-  ci = commit
-  co = checkout
   st = status -s
   # List local commits that were not pushed to remote repository
   review-local = "!git lg @{push}.."
@@ -92,7 +89,3 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-
-[gitbutler]
-	aiModelProvider = openai
-	aiAnthropicKeyOption = butlerAPI
