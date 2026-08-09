@@ -37,7 +37,9 @@
 
 [delta]
   navigate = true # Use n and N to move between diff sections
-  dark = true # Use light = true instead, or omit for auto-detection
+  dark = true # Explicit for lazygit proper styling
+  line-numbers = true
+  side-by-side = true
 
 [merge]
   conflictStyle = zdiff3
