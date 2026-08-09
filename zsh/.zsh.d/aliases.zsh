@@ -19,7 +19,7 @@ alias bt="btop"
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
 alias egrep='grep -E --color=auto'
-alias fgrep='grep -F --color=auto'  
+alias fgrep='grep -F --color=auto'
 
 # Confirm before overwriting something
 alias mv='mv -i'
@@ -73,6 +73,13 @@ update-discord() {
     rm /tmp/discord.deb
 }
 
+update-delta() {
+    local version="$(wget -qO- https://api.github.com/repos/dandavison/delta/releases/latest | jq -r '.tag_name')"
+    wget "https://github.com/dandavison/delta/releases/download/$version/git-delta_${version}_amd64.deb" -O /tmp/git-delta.deb
+    sudo dpkg -i /tmp/git-delta.deb
+    rm /tmp/git-delta.deb
+}
+
 update-yt-dlp() {
     curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o ~/.local/bin/yt-dlp
     chmod a+rx ~/.local/bin/yt-dlp  # Make executable
@@ -86,7 +93,7 @@ update-ghostty() {
     curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh | bash
 }
 
-function y() {
+y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	command yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"

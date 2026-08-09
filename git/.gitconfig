@@ -27,10 +27,20 @@
   defaultBranch = main
 
 [core]
-  pager = less -FX # Don't paginate output by default
+  pager = delta
   excludesfile = ~/.gitignore_global
   editor = code --wait
   whitespace = -trailing-space # Don't consider trailing space change as a cause for merge conflicts
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true # Use n and N to move between diff sections
+  dark = true # Use light = true instead, or omit for auto-detection
+
+[merge]
+  conflictStyle = zdiff3
 
 [column]
   ui = auto
