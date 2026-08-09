@@ -47,7 +47,6 @@ if [[ $(uname -r) == *"WSL2"* ]]; then
     export PATH="$PATH:/mnt/c/Users/yurai/AppData/Local/Programs/Microsoft VS Code/bin"
 fi
 
-alias c="code ."
 alias dotc='cd $HOME/dotfiles; code .'
 alias cmus='cd ~/Music; cmus'
 
