@@ -6,7 +6,7 @@ bindkey -e
 
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
-[ -s "/home/dropbit/.bun/_bun" ] && source "/home/dropbit/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 export WALK_EDITOR=code 
 

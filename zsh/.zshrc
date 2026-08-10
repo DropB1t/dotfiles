@@ -131,4 +131,4 @@ else
 fi;
 
 # opencode
-export PATH=/home/dropbit/.opencode/bin:$PATH
+export PATH="$HOME/.opencode/bin:$PATH"
