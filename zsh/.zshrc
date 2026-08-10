@@ -45,13 +45,6 @@ zstyle ':z4h:ssh:*' send-extra-files '~/.nanorc' '~/.env.zsh'
 # Start ssh-agent if it's not running yet.
 zstyle ':z4h:ssh-agent:' start yes
 
-# Clone additional Git repositories from GitHub.
-#
-# This doesn't do anything apart from cloning the repository and keeping it
-# up-to-date. Cloned files can be used after `z4h init`. This is just an
-# example. If you don't plan to use Oh My Zsh, delete this line.
-#z4h install ohmyzsh/ohmyzsh || return
-
 # Install or update core components (fzf, zsh-autosuggestions, etc.) and
 # initialize Zsh. After this point console I/O is unavailable until Zsh
 # is fully initialized. Everything that requires user interaction or can
@@ -59,18 +52,13 @@ zstyle ':z4h:ssh-agent:' start yes
 z4h init || return
 
 # Extend PATH.
-path=(~/bin $path)
+path=(~/.opencode/bin $path)  # opencode
 
 # Export environment variables.
 export GPG_TTY=$TTY
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
-
-# Use additional Git repositories pulled in with `z4h install`.
-#
-# This is just an example that you should delete. It does nothing useful.
-#z4h source ohmyzsh/ohmyzsh/lib/diagnostics.zsh  # source an individual file
 
 # Define key bindings.
 z4h bindkey z4h-backward-kill-word  Ctrl+Backspace     Ctrl+H
@@ -86,41 +74,30 @@ z4h bindkey z4h-cd-down    Alt+Down   # cd into a child directory
 autoload -Uz zmv
 
 # Define named directories: ~w <=> Windows home directory on WSL.
-[[ -z $z4h_win_home ]] || hash -d w=$z4h_win_home
+[[ -z $z4h_win_home ]] || hash -d w="$z4h_win_home"
 
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 setopt glob_dots     # no special treatment for file names with a leading dot
 setopt no_auto_menu  # require an extra TAB press to open the completion menu
 
-bindkey -e
 eval "$(dircolors -b)"
 
-ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-
+# Source additional configs from ~/.zsh.d (explicit list: new files must be
+# added here to take effect).
 typeset -a sources
 CONFIG_DIR="$HOME/.zsh.d"
-source "$CONFIG_DIR/colors.zsh"
 
+sources+="$CONFIG_DIR/colors.zsh"
 sources+="$CONFIG_DIR/history.zsh"
 sources+="$CONFIG_DIR/exports.zsh"
 sources+="$CONFIG_DIR/aliases.zsh"
 sources+="$CONFIG_DIR/update-zig.zsh"
 sources+="$CONFIG_DIR/killfzf.zsh"
 
-for file in $sources[@]; do
-    if [[ -a $file ]]; then
-       source $file
-    else
-        echo "config file not found: $file"
-    fi
+for file in "${sources[@]}"; do
+  if [[ -e "$file" ]]; then
+    source "$file"
+  else
+    echo "config file not found: $file" >&2
+  fi
 done
-
-autoload -Uz compinit 
-if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-	compinit;
-else
-	compinit -C;
-fi;
-
-# opencode
-export PATH="$HOME/.opencode/bin:$PATH"
