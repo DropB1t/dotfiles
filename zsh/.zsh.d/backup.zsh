@@ -6,8 +6,6 @@ bindkey -e
 
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
 export WALK_EDITOR=code 
 
 source "$HOME/.config/zsh/zsh-nvm/zsh-nvm.plugin.zsh"

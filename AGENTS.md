@@ -16,7 +16,7 @@ Personal dotfiles managed with **GNU Stow**. Each top-level directory is a stow 
 - `zsh/.zshrc` depends on **zsh4humans** (`z4h`), installed by `configure_machine.sh`; it fails on machines without it.
 - `.zshrc` sources `~/.zsh.d/*.zsh` via an **explicit list** — dropping a new file into `zsh/.zsh.d/` does nothing until it's added to the `sources` array in `.zshrc`. Note `backup.zsh` exists but is intentionally not in the list.
 - `zsh/.zsh.d/zsh-nvm/` is vendored third-party code (own LICENSE/README) — don't edit it as if it were first-party.
-- Tracked zsh configs must not contain absolute home paths (`/home/<user>/...`) — use `$HOME` (or the relevant var, e.g. `$BUN_INSTALL`). Machine-specific env values belong in `~/.env.zsh`, which `.zshrc` sources via `z4h` and which is not tracked here.
+- Tracked zsh configs must not contain absolute home paths (`/home/<user>/...`) — use `$HOME` (or the relevant var, e.g. `$GOPATH`). Machine-specific env values belong in `~/.env.zsh`, which `.zshrc` sources via `z4h` and which is not tracked here.
 - `*.ttc` files are tracked via **Git LFS** (`.gitattributes`, `filter "lfs" required = true` in the stowed `.gitconfig`). Currently there is no fonts package, but git-lfs must be installed before adding new font files.
 - Stow conflicts: if a target file already exists in `~/` and isn't a stow symlink, stow refuses — remove/backup the existing file first (notably `~/.zshrc` created by the zsh4humans installer).
 
