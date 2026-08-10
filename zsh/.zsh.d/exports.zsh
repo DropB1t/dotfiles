@@ -74,27 +74,4 @@ _gen_fzf_default_opts() {
    --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D"
 }
 
-_gen_fzf_catppuccin() {
-  local color00='#1e1e2e'
-  local color01='#313244'
-  local color02='#414868'
-  local color03='#585b70'
-  local color04='#cdd6f4'
-  local color05='#f5e0dc'
-  local color06='#f8bd96'
-  local color07='#f2d5cf'
-  local color08='#f38ba8'
-  local color09='#f2a272'
-  local color0A='#f9c74f'
-  local color0B='#a6e3a1'
-  local color0C='#94e2d5'
-  local color0D='#89b4fa'
-  local color0E='#cba6f7'
-  local color0F='#b9bbcf'
-  export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
-    --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D \
-    --color=fg:$color04,header:$color0D,info:$color0A,pointer:$color0C \
-    --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D" 
-}
-
 #_gen_fzf_default_opts
