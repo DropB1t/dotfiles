@@ -71,7 +71,6 @@ z4h source ~/.env.zsh
 #
 # This is just an example that you should delete. It does nothing useful.
 #z4h source ohmyzsh/ohmyzsh/lib/diagnostics.zsh  # source an individual file
-#z4h load   ohmyzsh/ohmyzsh/plugins/zsh-nvm  # load a plugin
 
 # Define key bindings.
 z4h bindkey z4h-backward-kill-word  Ctrl+Backspace     Ctrl+H
@@ -96,9 +95,6 @@ setopt no_auto_menu  # require an extra TAB press to open the completion menu
 bindkey -e
 eval "$(dircolors -b)"
 
-export NVM_COMPLETION=true
-export NVM_LAZY_LOAD=true
-
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 typeset -a sources
@@ -110,10 +106,6 @@ sources+="$CONFIG_DIR/exports.zsh"
 sources+="$CONFIG_DIR/aliases.zsh"
 sources+="$CONFIG_DIR/update-zig.zsh"
 sources+="$CONFIG_DIR/killfzf.zsh"
-
-if [ -d "$HOME/.nvm" ]; then
-  sources+="$CONFIG_DIR/zsh-nvm/zsh-nvm.plugin.zsh"
-fi
 
 for file in $sources[@]; do
     if [[ -a $file ]]; then

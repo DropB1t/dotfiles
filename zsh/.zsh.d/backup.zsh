@@ -1,14 +1,6 @@
 
-export NVM_COMPLETION=true
-export NVM_LAZY_LOAD=true
-
-bindkey -e
-
-ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-
 export WALK_EDITOR=code 
 
-source "$HOME/.config/zsh/zsh-nvm/zsh-nvm.plugin.zsh"
 source "$HOME/.config/zsh/catppuccin-syntax-highlighting.zsh"
 source "$HOME/.config/zsh/exports.zsh"
 source "$HOME/.config/zsh/history.zsh"
