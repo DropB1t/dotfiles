@@ -2,6 +2,8 @@
 
 # Note: Make sure to run this script with appropriate permissions.
 
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
 install_required_packages() {
 	for package in "${packages[@]}"; do
 		if ! dpkg -s "$package" &> /dev/null; then
@@ -117,12 +119,8 @@ if [[ "$(uname -a)" == *"Ubuntu"* || "$(uname -a)" == *"Debian"* || "$(uname -a)
 		echo "batcat is not installed."
 	fi
 
-    # Install zsh4humans
-    if command -v curl >/dev/null 2>&1; then
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/romkatv/zsh4humans/v5/install)"
-    else
-        sh -c "$(wget -O- https://raw.githubusercontent.com/romkatv/zsh4humans/v5/install)"
-    fi
+	# Install the native Zsh configuration and its pinned plugins.
+	"$script_dir/install"
 
 else
 	echo "At the moment this script is only compatible with Ubuntu distribution."
