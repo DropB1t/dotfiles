@@ -69,7 +69,7 @@ _native_cd_up() {
 _native_cd_down() {
   local selected
   local -a directories
-  directories=(./*(N/))
+  directories=("./*(N/)")
 
   if (( ! ${#directories} )); then
     zle -M 'no child directories'
@@ -168,31 +168,23 @@ bindkey '^E' end-of-line                    # Ctrl-E: move to the end of the lin
 bindkey '^W' backward-kill-word             # Ctrl-W: delete the previous word.
 bindkey '^U' backward-kill-line             # Ctrl-U: delete from the cursor to the line start.
 bindkey '^H' backward-kill-word             # Ctrl-H/Ctrl-Backspace: delete the previous shell word.
-bindkey '\e^H' _native_backward_kill_zword # Ctrl-Alt-Backspace variant: delete the previous path segment.
-bindkey '\e^?' _native_backward_kill_zword # Alt-Backspace variant: delete the previous path segment.
+bindkey '\e?' _native_backward_kill_zword   # Alt-Backspace variant: delete the previous path segment.
 
-bindkey '^_' undo   # Ctrl-/: undo the last line edit.
 bindkey '^[[Z' undo # Shift-Tab: undo the last line edit.
-bindkey '\e/' redo # Alt-/: redo the last undone line edit.
+bindkey '\e/' redo  # Alt-/: redo the last undone line edit.
 
-bindkey '\e[1;3A' _native_cd_up # Alt-Up: change to the parent directory.
+bindkey '\e[1;3A' _native_cd_up   # Alt-Up: change to the parent directory.
 bindkey '\e[1;3B' _native_cd_down # Alt-Down: choose and enter a child directory.
-bindkey '\e\e[A' _native_cd_up # Alternate Alt-Up terminal sequence: change to the parent directory.
-bindkey '\e\e[B' _native_cd_down # Alternate Alt-Down sequence: choose and enter a child directory.
 
-bindkey '^R' _minimal_fzf_history     # Ctrl-R: search command history with fzf.
-bindkey '^T' _minimal_fzf_files       # Ctrl-T: insert a file selected with fzf.
+bindkey '^R' _minimal_fzf_history      # Ctrl-R: search command history with fzf.
+bindkey '^T' _minimal_fzf_files        # Ctrl-T: insert a file selected with fzf.
 bindkey '\ec' _minimal_fzf_directories # Alt-C: choose and enter a directory with fzf.
-bindkey '^K' killfzf                  # Ctrl-K: select and signal processes with fzf.
-bindkey '\ek' kill-line              # Alt-K: delete from the cursor to the line end.
+bindkey '^K' killfzf                   # Ctrl-K: select and signal processes with fzf.
+bindkey '\ek' kill-line                # Alt-K: delete from the cursor to the line end.
 
 bindkey '^[[A' history-substring-search-up   # Up: find the previous history entry containing the buffer.
-bindkey '^P' history-substring-search-up     # Ctrl-P: find the previous history entry containing the buffer.
 bindkey '^[[B' history-substring-search-down # Down: find the next history entry containing the buffer.
-bindkey '^N' history-substring-search-down   # Ctrl-N: find the next history entry containing the buffer.
 [[ -n ${terminfo[kcuu1]:-} ]] &&
   bindkey "${terminfo[kcuu1]}" history-substring-search-up # Terminal Up: substring history search.
 [[ -n ${terminfo[kcud1]:-} ]] &&
   bindkey "${terminfo[kcud1]}" history-substring-search-down # Terminal Down: substring history search.
-bindkey -M vicmd k history-substring-search-up   # Vim command k: previous matching history entry.
-bindkey -M vicmd j history-substring-search-down # Vim command j: next matching history entry.
