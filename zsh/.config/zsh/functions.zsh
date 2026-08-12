@@ -31,35 +31,12 @@ md() {
   mkdir -p -- "$1" && builtin cd -- "$1"
 }
 
-croot() {
-  local root
-  root=$(command git rev-parse --show-toplevel 2>/dev/null) || {
-    print -u2 'croot: not inside a Git repository'
-    return 1
-  }
-
-  builtin cd -- "$root"
-}
-
 y() {
-  (( $+commands[yazi] )) || {
-    print -u2 'y: yazi is not installed'
-    return 1
-  }
-
-  local tmp cwd
-  local -i yazi_status
-  tmp=$(mktemp -t yazi-cwd.XXXXXX) || return
-  command yazi "$@" --cwd-file="$tmp"
-  yazi_status=$?
-
-  if IFS= read -r -d '' cwd < "$tmp" &&
-     [[ -n $cwd && $cwd != "$PWD" && -d $cwd ]]; then
-    builtin cd -- "$cwd"
-  fi
-
-  command rm -f -- "$tmp"
-  return yazi_status
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
 }
 
 calc() {
