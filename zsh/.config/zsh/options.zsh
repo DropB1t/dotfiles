@@ -11,5 +11,5 @@ setopt GLOB_DOTS
 # Interactive behavior: allow comments and expand variables in the prompt.
 setopt INTERACTIVE_COMMENTS
 setopt PROMPT_SUBST
-unsetopt AUTO_MENU
+setopt AUTO_MENU
 unsetopt BEEP

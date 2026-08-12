@@ -47,8 +47,16 @@ _minimal_git_prompt() {
 
 _minimal_prompt_precmd() {
   local last_status=$?
+  local status_str=''
   _minimal_prompt_status=''
-  (( last_status )) && _minimal_prompt_status="%F{red}[${last_status}]%f "
+
+  if (( last_status > 0 )); then
+    if (( last_status > 128 && last_status <= 192 )) && status_str=$(kill -l $(( last_status - 128 )) 2>/dev/null) && [[ -n $status_str ]]; then
+      _minimal_prompt_status="%F{red}[${(U)status_str}]%f "
+    else
+      _minimal_prompt_status="%F{red}[${last_status}]%f "
+    fi
+  fi
   _minimal_git_prompt
 }
 
