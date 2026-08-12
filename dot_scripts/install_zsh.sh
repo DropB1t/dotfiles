@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-repo_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+repo_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
 data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
 cache_home="${XDG_CACHE_HOME:-$HOME/.cache}"
@@ -110,7 +110,7 @@ printf 'Checking Stow operations...\n'
 	stow -v --no-folding -t "$HOME" -R zsh
 )
 
-"$repo_dir/test_zsh.sh"
+"$repo_dir/dot_scripts/test_zsh.sh"
 
 printf '\nInstalled native Zsh configuration:\n'
 printf '  config:  %s\n' "$config_home/zsh"

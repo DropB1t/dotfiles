@@ -120,7 +120,7 @@ if [[ "$(uname -a)" == *"Ubuntu"* || "$(uname -a)" == *"Debian"* || "$(uname -a)
 	fi
 
 	# Install the native Zsh configuration and its pinned plugins.
-	"$script_dir/install"
+"$script_dir/install_zsh.sh"
 
 else
 	echo "At the moment this script is only compatible with Ubuntu distribution."

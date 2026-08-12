@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-repo_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+repo_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 
 if ! command -v stow >/dev/null 2>&1; then
 	printf 'error: GNU Stow is required to uninstall this package\n' >&2
