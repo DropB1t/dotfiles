@@ -9,7 +9,7 @@ _minimal_git_prompt() {
 
   local status_output header branch line
   local -a lines
-  local -i staged=0 modified=0 untracked=0
+  local -i staged=0 modified=0 untracked=0 ahead=0 behind=0
 
   status_output=$(LC_ALL=C GIT_OPTIONAL_LOCKS=0 command git status \
     --porcelain=v1 --branch --untracked-files=normal 2>/dev/null) || return
@@ -29,6 +29,13 @@ _minimal_git_prompt() {
     branch=${header%%...*}
   fi
 
+  if [[ $header =~ '\[ahead ([0-9]+)(, behind ([0-9]+))?\]' ]]; then
+    ahead=$match[1]
+    behind=${match[3]:-0}
+  elif [[ $header =~ '\[behind ([0-9]+)\]' ]]; then
+    behind=$match[1]
+  fi
+
   for line in "${lines[@]:1}"; do
     if [[ ${line[1,2]} == '??' ]]; then
       (( ++untracked ))
@@ -40,6 +47,8 @@ _minimal_git_prompt() {
 
   branch=${branch//\%/%%}
   _minimal_prompt_git=" %F{magenta}${branch}%f"
+  (( ahead )) && _minimal_prompt_git+=" %F{green}↑${ahead}%f"
+  (( behind )) && _minimal_prompt_git+=" %F{green}↓${behind}%f"
   (( staged )) && _minimal_prompt_git+=" %F{green}+${staged}%f"
   (( modified )) && _minimal_prompt_git+=" %F{yellow}~${modified}%f"
   (( untracked )) && _minimal_prompt_git+=" %F{red}?${untracked}%f"
