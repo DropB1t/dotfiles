@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-repo_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+repo_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 config_dir="$repo_dir/zsh/.config/zsh"
 test_root="$(mktemp -d)"
 trap 'rm -rf -- "$test_root"' EXIT
@@ -12,7 +12,7 @@ zsh -n \
 	"$repo_dir/zsh/.zshenv" \
 	"$config_dir/.zshrc" \
 	"$config_dir"/*.zsh \
-	"$repo_dir/zsh/.local/bin/zsh-update"
+"$repo_dir/zsh/.local/bin/zsh-update"
 
 mkdir -p -- \
 	"$test_root/home" \
