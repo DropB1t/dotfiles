@@ -12,7 +12,6 @@ zsh -n \
 	"$repo_dir/zsh/.zshenv" \
 	"$config_dir/.zshrc" \
 	"$config_dir"/*.zsh \
-"$repo_dir/zsh/.local/bin/zsh-update"
 
 mkdir -p -- \
 	"$test_root/home" \
