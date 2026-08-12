@@ -165,22 +165,25 @@ zle -N killfzf
 
 bindkey '^A' beginning-of-line              # Ctrl-A: move to the beginning of the line.
 bindkey '^E' end-of-line                    # Ctrl-E: move to the end of the line.
-bindkey '^W' backward-kill-word             # Ctrl-W: delete the previous word.
-bindkey '^U' backward-kill-line             # Ctrl-U: delete from the cursor to the line start.
-bindkey '^H' backward-kill-word             # Ctrl-H/Ctrl-Backspace: delete the previous shell word.
-bindkey '\e?' _native_backward_kill_zword   # Alt-Backspace variant: delete the previous path segment.
 
-bindkey '^[[Z' undo # Shift-Tab: undo the last line edit.
-bindkey '\e/' redo  # Alt-/: redo the last undone line edit.
+bindkey '^U' backward-kill-line             # Ctrl-U: delete from the cursor to the line start.
+bindkey '\eU' kill-line                     # Alt-U: delete from the cursor to the line end.
+
+bindkey '^H' backward-kill-word             # Ctrl-H/Ctrl-Backspace: delete the previous shell word.
+
+bindkey '\e[1;3D' undo # Alt-Left: undo the last line edit.
+bindkey '\e[1;3C' redo # Alt-Right: redo the last undone line edit.
+
+bindkey '\e[1;5D' backward-word # Ctrl-Left: move backward one word.
+bindkey '\e[1;5C' forward-word  # Ctrl-Right: move forward one word.
 
 bindkey '\e[1;3A' _native_cd_up   # Alt-Up: change to the parent directory.
 bindkey '\e[1;3B' _native_cd_down # Alt-Down: choose and enter a child directory.
 
 bindkey '^R' _minimal_fzf_history      # Ctrl-R: search command history with fzf.
 bindkey '^T' _minimal_fzf_files        # Ctrl-T: insert a file selected with fzf.
-bindkey '\ec' _minimal_fzf_directories # Alt-C: choose and enter a directory with fzf.
 bindkey '^K' killfzf                   # Ctrl-K: select and signal processes with fzf.
-bindkey '\ek' kill-line                # Alt-K: delete from the cursor to the line end.
+bindkey '\eC' _minimal_fzf_directories # Alt-C: choose and enter a directory with fzf.
 
 bindkey '^[[A' history-substring-search-up   # Up: find the previous history entry containing the buffer.
 bindkey '^[[B' history-substring-search-down # Down: find the next history entry containing the buffer.
@@ -188,3 +191,4 @@ bindkey '^[[B' history-substring-search-down # Down: find the next history entry
   bindkey "${terminfo[kcuu1]}" history-substring-search-up # Terminal Up: substring history search.
 [[ -n ${terminfo[kcud1]:-} ]] &&
   bindkey "${terminfo[kcud1]}" history-substring-search-down # Terminal Down: substring history search.
+
