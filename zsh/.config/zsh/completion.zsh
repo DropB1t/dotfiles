@@ -1,6 +1,8 @@
 autoload -Uz compinit
 zmodload zsh/complist
 
+bindkey -M menuselect '^[[Z' reverse-menu-complete  # Shift-Tab: move backwards through the completion menu.
+
 typeset _completion_cache_dir="$XDG_CACHE_HOME/zsh"
 typeset _completion_dump="$_completion_cache_dir/zcompdump-$ZSH_VERSION"
 [[ -d "$_completion_cache_dir" ]] || mkdir -p -- "$_completion_cache_dir"
