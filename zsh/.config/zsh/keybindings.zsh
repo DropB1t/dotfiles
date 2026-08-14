@@ -61,6 +61,16 @@ _native_backward_kill_zword() {
   zle backward-kill-word
 }
 
+_native_backward_word() {
+  local WORDCHARS=''
+  zle backward-word
+}
+
+_native_forward_word() {
+  local WORDCHARS=''
+  zle forward-word
+}
+
 _native_cd_up() {
   builtin cd .. || return
   zle reset-prompt
@@ -156,6 +166,8 @@ _minimal_fzf_directories() {
 zle -N history-substring-search-up
 zle -N history-substring-search-down
 zle -N _native_backward_kill_zword
+zle -N _native_backward_word
+zle -N _native_forward_word
 zle -N _native_cd_up
 zle -N _native_cd_down
 zle -N _minimal_fzf_history
@@ -174,8 +186,11 @@ bindkey '^H' backward-kill-word             # Ctrl-H/Ctrl-Backspace: delete the 
 bindkey '\e[1;3D' undo # Alt-Left: undo the last line edit.
 bindkey '\e[1;3C' redo # Alt-Right: redo the last undone line edit.
 
-bindkey '\e[1;5D' backward-word # Ctrl-Left: move backward one word.
-bindkey '\e[1;5C' forward-word  # Ctrl-Right: move forward one word.
+bindkey '\e[1;5D' _native_backward_word # Ctrl-Left: move backward one word.
+bindkey '\e[1;5C' _native_forward_word  # Ctrl-Right: move forward one word.
+
+bindkey '\e[1;4D' backward-word # Alt-Shift-Left: move backward one shell word.
+bindkey '\e[1;4C' forward-word  # Alt-Shift-Right: move forward one shell word.
 
 bindkey '\e[1;3A' _native_cd_up   # Alt-Up: change to the parent directory.
 bindkey '\e[1;3B' _native_cd_down # Alt-Down: choose and enter a child directory.
