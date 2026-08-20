@@ -222,9 +222,15 @@ download_music_from_youtube() {
     print -u2 "download_music_from_youtube: $downloader is not installed"
     return 1
   }
+  (( $+commands[ffmpeg] )) || {
+    print -u2 'download_music_from_youtube: ffmpeg is not installed'
+    return 1
+  }
 
   mkdir -p -- "$HOME/Music" || return
-  "$downloader" -x --audio-format mp3 --audio-quality 0 \
+  "$downloader" -x --audio-format mp3 --audio-quality 320K \
+    --embed-metadata --embed-thumbnail --convert-thumbnails jpg \
+    --parse-metadata "%(artist,uploader)s:%(meta_artist)s" \
     -o "$HOME/Music/%(title)s.%(ext)s" "https://youtu.be/$video"
 }
 
