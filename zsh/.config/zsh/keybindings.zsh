@@ -181,7 +181,7 @@ bindkey '^E' end-of-line                    # Ctrl-E: move to the end of the lin
 bindkey '^U' backward-kill-line             # Ctrl-U: delete from the cursor to the line start.
 bindkey '\eU' kill-line                     # Alt-U: delete from the cursor to the line end.
 
-bindkey '^H' backward-kill-word             # Ctrl-H/Ctrl-Backspace: delete the previous shell word.
+bindkey '^H' _native_backward_kill_zword    # Ctrl-H/Ctrl-Backspace: delete the previous whitespace-delimited word.
 
 bindkey '\e[1;3D' undo # Alt-Left: undo the last line edit.
 bindkey '\e[1;3C' redo # Alt-Right: redo the last undone line edit.
@@ -206,4 +206,3 @@ bindkey '^[[B' history-substring-search-down # Down: find the next history entry
   bindkey "${terminfo[kcuu1]}" history-substring-search-up # Terminal Up: substring history search.
 [[ -n ${terminfo[kcud1]:-} ]] &&
   bindkey "${terminfo[kcud1]}" history-substring-search-down # Terminal Down: substring history search.
-
