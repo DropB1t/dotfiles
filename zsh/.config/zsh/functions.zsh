@@ -197,6 +197,30 @@ update-delta() {
   command rm -f -- "$package"
 }
 
+update-fastpotify() {
+  local command_name download_url package
+
+  for command_name in wget jq flatpak; do
+    (( $+commands[$command_name] )) || {
+      print -u2 "update-fastpotify: $command_name is not installed"
+      return 1
+    }
+  done
+
+  download_url=$(command wget -qO- \
+    https://api.github.com/repos/crmne/fastpotify/releases/latest |
+    command jq -r '.assets[] | select(.name | endswith(".flatpak")) | .browser_download_url') || return
+  [[ -n $download_url && $download_url != null ]] || {
+    print -u2 'update-fastpotify: could not determine the latest release'
+    return 1
+  }
+
+  package=/tmp/${download_url##*/}
+  command wget "$download_url" -O "$package" || return
+  command flatpak install --user -y "$package" || return
+  command rm -f -- "$package"
+}
+
 update-yt-dlp() {
   (( $+commands[curl] )) || {
     print -u2 'update-yt-dlp: curl is not installed'
